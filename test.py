@@ -11,53 +11,63 @@ suma = round(suma,2)
 
 #Zad2
 def funkcja(min, max, ile, n):
-    if min > max:
+    try:
+        if ile <= 0:
+            raise ValueError
+
+        lista = []
+        for i in range(ile):
+            lista.append(random.randint(min,max))
+        print(lista)
+
+        result_list = []
+        if ile % n == 0:
+            for i in range(0,len(lista),n):
+                temp_list = []
+                for j in range(i,i+n):
+                    temp_list.append(lista[j])
+                result_list.append(temp_list)
+        else:
+            raise ValueError
+        return result_list
+
+    except ValueError:
         return "error"
-
-    lista = []
-    for i in range(ile):
-        lista.append(random.randint(min,max))
-    k = 0
-    for j in lista:
-        if(k == n):
-            sys.stdout.writelines("\n")
-            k = 0
-        temp = str(j)
-        sys.stdout.writelines(temp)
-        sys.stdout.writelines(" ")
-
-        k += 1
 
 min = 2
 max = 9
-ile = 25
-n = 5
-#funkcja(min, max,ile,n)
+ile = 24
+n = 3
+#print(funkcja(min, max,ile,n))
 
 
 #Zad3
 def plik(nazwa_pliku):
     a = open(nazwa_pliku,"r")
     b = a.readlines()
+    lista = []
     for line in b:
         temp = [int(i) for i in line.split()]
         min = temp[0]
         for i in temp:
             if (i < min):
                 min = i
-        print(min)
+        lista.append(min)
+    print(lista)
 
-#plik('liczby.txt')
+plik('liczby.txt')
 
 
 
 #Zad4
-def pole(a,h):
-    if(a<0 or h<0):
-        return "Dlugosci nie moga byc ujemne"
-    else:
+def pole():
+    try:
+        a = int(input("Wpisz dlugosc boku podstawy: "))
+        h = int(input("Wpisz wysokosc graniastoslupa: "))
+        if(a < 0 or h < 0):
+            raise ValueError
         return a*a*h
-a = int(input("Wpisz dlugosc boku podstawy: "))
-h = int(input("Wpisz wysokosc graniastoslupa: "))
-print(pole(a,h))
+    except ValueError:
+        return "error"
+#print(pole())
 
