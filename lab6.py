@@ -1,6 +1,7 @@
 import numpy as np
 import math
 
+
 #a = np.arange(12).reshape((3,4))
 
 #print(a)
@@ -69,4 +70,5 @@ f = np.array([2.1, 5.9, 1.6])
 #zad5
 g = np.array([[1, 6, 2],[8, 2, 5]])
 for a in g:
-    print(math.sin(a))
+    for b in a:
+        print(math.sin(b))
