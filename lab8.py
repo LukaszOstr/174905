@@ -23,7 +23,7 @@ h = zamowienia['Sprzedawca'].unique()
 i = zamowienia['Utarg'].sort_values(ascending=False).head()
 j = zamowienia.groupby('Sprzedawca').count()['idZamowienia']
 k = zamowienia.groupby('Kraj').count()['idZamowienia']
-l = zamowienia.where(zamowienia['Rok'].dt.year == 2005 )
+l = zamowienia.where(zamowienia['Rok'].dt.year == 2005)
 
 print(k)
 
